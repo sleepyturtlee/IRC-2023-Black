@@ -13,7 +13,8 @@ public class Drivetrain extends SubsystemBase {
         // CB channel = port you plugged victors in on ur roborio. REPLACE THE 0 AND 1 AFTER they're just placeholders
         leftMotor = new VictorSP(0);
         rightMotor= new VictorSP(1);
-        leftMotor.setInverted(true);
+        leftMotor.setInverted(false);
+        rightMotor.setInverted(true);
 
         /*  If motor is inverted.. or right motor depending on robot
             leftMotor.setInverted(true);
