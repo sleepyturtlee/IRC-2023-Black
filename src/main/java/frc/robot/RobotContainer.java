@@ -12,8 +12,8 @@ import frc.robot.subsystems.Intake;
 public class RobotContainer {
   Joystick leftJoystick = new Joystick(0);
   Joystick rightJoystick = new Joystick(1);
-  JoystickButton raiseArm = new JoystickButton(rightJoystick, 1);
-  JoystickButton lowerArm = new JoystickButton(rightJoystick, 2);
+  JoystickButton raiseArm = new JoystickButton(rightJoystick, 2);
+  JoystickButton lowerArm = new JoystickButton(rightJoystick, 1);
   JoystickButton intakeIn = new JoystickButton(leftJoystick, 1);
   JoystickButton intakeOut = new JoystickButton(leftJoystick, 2);
 
@@ -28,10 +28,12 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-    raiseArm.onTrue(new InstantCommand(() -> arm.moveArm(0.4)));
-    lowerArm.onTrue(new InstantCommand(() -> arm.moveArm(-0.4)));
-    intakeIn.onTrue(new InstantCommand(() -> intake.setSpeed(0.4)));
-    intakeOut.onTrue(new InstantCommand(() -> intake.setSpeed(-0.4)));
+    raiseArm.whileTrue(new InstantCommand(() -> arm.moveArm(0.5)));
+    lowerArm.whileTrue(new InstantCommand(() -> arm.moveArm(0)));
+    intakeIn.whileTrue(new InstantCommand(() -> intake.setSpeed(0.5)));
+    intakeOut.whileTrue(new InstantCommand(() -> intake.setSpeed(-0.5)));
+    intakeIn.onFalse(new InstantCommand(() -> intake.setSpeed(0)));
+    intakeOut.onFalse(new InstantCommand(() -> intake.setSpeed(0)));
   }
 
   public Command getAutonomousCommand() {
