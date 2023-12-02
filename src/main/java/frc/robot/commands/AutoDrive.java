@@ -35,7 +35,6 @@ public class AutoDrive extends CommandBase {
     }
 
     public void end(boolean stop) {
+        drivetrain.drive(0, 0); 
     }
-
-
 }
