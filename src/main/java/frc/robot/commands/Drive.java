@@ -27,7 +27,7 @@ public class Drive extends CommandBase {
 
     // execute function runs repeatedly
     public void execute() {
-        drivetrain.drive(leftJ.getY(), rightJ.getY());
+        drivetrain.drive(-leftJ.getY(), rightJ.getY());
     }
 
     public boolean isFinished() {
